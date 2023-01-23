@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<style>
+  .highlighted-section {
+    background-color: #edd8b6;
+  }
+
+  a {
+    color: #000000;
+  }
+
+  #position {
+    position: relative;
+    min-height: 1em;
+  }
+
+  #position p {
+    position: absolute;
+    right: 0;
+
+  }
+
+  #form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  form div:nth-child(2) {
+    margin-top: 5px;
+  }
+</style>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>A small quiz</title>
+</head>
+
+<body>
+  <!-- Start Section 1 -->
+  <h1>Lorem ipsum dolor sit amet</h1>
+  <p>Lorem ipsum dolor sit amet</p>
+  <h6>Lorem ipsum dolor sit amet</h6>
+
+  <!-- End Section 1 -->
+
+  <section id="section2" class="highlighted-section">
+    <!-- Start Section 2 -->
+    <a href="https://jrenterprising.ro/" target="_blank">eiusmod tempor incididunt</a>
+
+    <!-- End Section 2 -->
+  </section>
+
+  <section id="form">
+    <h2>Is this a secondary title ?</h2>
+
+    <form>
+      <div>
+        <label for="inputText"> What is this input ? </label>
+
+        <input id="inputText" type="text" name="inputTextName" maxlength="2" />
+      </div>
+
+      <div>
+        <label for="input-select">What kind of input is this ?</label>
+
+        <select name="inputs" id="input-select">
+          <option value="">--Please choose an option--</option>
+          <option value="text">Text</option>
+          <option value="date">Date</option>
+          <option value="select">Select</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
+    </form>
+  </section>
+
+  <section id="position">
+    <p>Excepteur sint occaecat cupidatat non proident</p>
+  </section>
+
+  <!-- Start Section 3 -->
+  <footer>
+    <p>Ut enim ad minim veniam</p>
+  </footer>
+
+  <!-- End Section 3 -->
+
+
+</body>
+
+<script>
+
+  function isNullOrUndefined(p) {
+    // while '' (empty string) would yield falsy, we should only consider null and undefined
+    return p === undefined || p === null;
+  }
+  console.log('test 1: ', isNullOrUndefined(null));
+  console.log('test 2: ', isNullOrUndefined(undefined));
+  let variableTest;
+  console.log('test 3: ', isNullOrUndefined(variableTest));
+  let variableTest2 = null;
+  console.log('test 4: ', isNullOrUndefined(variableTest2));
+  console.log('test 5: ', isNullOrUndefined(0)); // should yield false, 0 is not null nor undefined\
+
+
+  function increaseByOne(arr) {
+    return arr.map(x => x + 1);
+  }
+
+
+  const testArray = [1, 2, 3];
+  console.log('test increaseByOne: ', increaseByOne(testArray));
+
+
+  const fooBarObject = {
+    foo: 1,
+    bar: false,
+  };
+
+  function notUpdateFooBar() {
+    const copy = { ...fooBarObject };
+
+    copy.bar = true;
+
+    console.log(fooBarObject, copy);
+  }
+
+
+  notUpdateFooBar();
+
+  function getAllANodes() {
+
+    return document.querySelectorAll('a');
+  }
+  let allANodes = getAllANodes();
+  console.log('All a nodes: ', allANodes);
+
+  function handleTextChange() {
+    let input = document.querySelector('#inputText');
+    let inputValue = '';
+    console.log('input: ', input);
+    input.addEventListener('keyup', function () {
+      inputValue = input.value;
+      console.log('input value: ', inputValue);
+    })
+
+
+    return inputValue;
+  }
+  handleTextChange();
+
+  function handleSelectChange() {
+    let input = document.querySelector('#input-select');
+    let inputValue = '';
+    console.log('input: ', input);
+    input.addEventListener('change', function () {
+      inputValue = input.value;
+      console.log('input value: ', inputValue);
+    })
+
+
+    return inputValue;
+  }
+  handleSelectChange();
+
+</script>
+
+</html>
+
+<!--
+HTML
+1) What is the title of this HTML page? 
+A small quiz
+
+2) Add in Section 1 in this order: Most important (biggest) Heading, a Paragraph, The least important (smallest) Heading. Each tag should contain this text: "Lorem ipsum dolor sit amet"; 
+
+3) Add in Section 2 a link tag that should point to this website: "https://jrenterprising.ro/". When clicked this link should open in a new tab and the text inside the tag should be: "eiusmod tempor incididunt"; 
+
+4) Add in Section 3 a Footer and inside that tag create a Paragraph which should contain this text: "Ut enim ad minim veniam";
+
+5) For the input with the id="inputText", what property is missing so we can identify the value of the input?
+In order to get the value from the form input on the server side, the input has to have the "name" attribute set.
+
+
+6) For the input with the id="inputText", what property should we add to limit the number of characters to 2?
+maxlength
+
+
+CSS - please make in the changes for CSS inside the style tag located at the beginning of the file;
+7) Using CSS please add a class that would change the background color of the tag with the id="section2" to: "#edd8b6". If this requires changes to the HTML, please update it;
+
+8) Using CSS please select all a tags and change their text color to "#000000";
+
+9) Using CSS please add a spacing of 5px between the 2 divs from the form;
+
+10) What is the default position of the div element ? What about the span element?
+The div elements have by default the "block" value for the display attribute, however span elements are "inline". Regarding the position property, 
+the default value is "static".
+
+11) Using CSS and position prop please align the p tag from section id="position" to right of the page;
+
+12) Using CSS and flexbox please align the section id="form" to the center of the page. Did you maintain the correct order of the elements in the page?
+In order to maintain the elements in the same order as before, i have used   flex-direction: column;
+
+JS - please make the changes in the script tag located at the bottom, near the closing HTML tag;
+13) Can you tell the difference between const and let as variable initialization?
+Const references cannot be reassigned, as opposed to let variables. However, it is possible to modify the contents of a const variable, 
+for instance
+const arr = [1,2,3];
+arr.push(4);
+would result in adding an element to a const variable. It is possible to add elements to a const array for instance, however
+the reference cannot be reassigned:
+arr = [4,5,6] would be an illegal statement.
+
+14) Please write a function named isNullOrUndefined which should return true if the value is NULL or UNDEFINED. The function should receive 1 parameter. Don't forget to call the function;
+
+15) Please write a function name increaseByOne which should receive as a parameter an array of numbers and returns an array with each number increased by 1. Example: input: [1,2,3] -> output: [2,3,4]. You can use testArray to test; Don't forget to call the function;
+
+16) Please update the function notUpdateFooBar so that when we change the copy object we are affecting fooBarObject;
+
+17) Please write a function named getAllANodes that would return all the a tag DOM Nodes in the page;
+
+18) Please write a function named handleTextChange that should return the value from the input id="inputText" on every key stroke;
+
+19) Please write a function named handleSelectChange that should return the value from the select id="input-select" on value change;
+
+
+-->
